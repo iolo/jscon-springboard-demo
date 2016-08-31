@@ -1,0 +1,10 @@
+.idea/
+*.iml
+target/
+node_modules/
+bower_components/
+.DS_Store
+Thumbs.db
+npm-debug.log
+etc/
+node/

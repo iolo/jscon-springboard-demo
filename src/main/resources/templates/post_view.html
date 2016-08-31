@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>post view</title>
+</head>
+<body>
+
+<%- include('_header.html') %>
+
+<div id="wrapper">
+    <p>back to <a href="post_list?forumId=<%= post.forum.id%>">post list</a></p>
+
+    <h1 class="sbPostTitle"><%= post.title %></h1>
+
+    <p class="sbPostContent"><%- $marked(post.content) %></p>
+
+    <p class="sbPostCreatedAt">at <%= $timeAgo(post.createdAt) %></p>
+
+    <p class="sbPostUser">by <%= post.user.username %></p>
+
+    <hr/>
+
+    <h3>comments:</h3>
+
+    <ul>
+        <% for(var comment of comments) { %>
+        <li id="comment_<%= comment.id %>">
+            <p class="sbCommentContent"><%- $marked(comment.content) %></p>
+            <small class="sbCommentCreatedAt">at <%= $timeAgo(comment.createdAt) %></small>
+            <small class="sbCommentUser">by <%= comment.user.username %></small>
+        </li>
+        <% } %>
+    </ul>
+
+    <% if(currentUser) { %>
+    <form id="comment_form" action="comment_save" method="POST">
+        <input type="hidden" name="postId" value="<%= postId %>"/>
+
+        <p>
+            <textarea name="content"></textarea>
+            <input type="submit"/>
+        </p>
+    </form>
+    <% } else { %>
+    <div>
+        <a href="login?next=<%= encodeURIComponent('post_view?postId=' + post.id + '#comment_form') %>">login to write
+            comment</a>
+    </div>
+    <% } %>
+</div><!--#wrapper-->
+
+<%- include('_footer.html') %>
+
+</body>
+</html>

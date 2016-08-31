@@ -1,0 +1,17 @@
+<div id="header">
+    <h1>springboard</h1>
+    <div>
+        <a href="forum_list">forums</a>
+        <span>|</span>
+        <% if(locals.currentUser) { %>
+        <span><%= currentUser.username %></span>
+        <span>|</span>
+        <a href="logout">logout</a>
+        <% } else { %>
+        <a href="login">login</a>
+        <span>|</span>
+        <a href="signup">signup</a>
+        <% } %>
+    </div>
+    <hr/>
+</div>

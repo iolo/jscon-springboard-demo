@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>signup</title>
+</head>
+<body>
+
+<%- include('_header.html') %>
+
+<div id="wrapper">
+    <h1>signup</h1>
+
+    <form action="signup_post" method="POST">
+        <input name="next" type="hidden" value="<%=signupForm.next%>"/>
+
+        <p>
+            <label for="username">username:</label>
+            <input id="username" name="username" type="text" value="<%=signupForm.username%>"/>
+        </p>
+
+        <p>
+            <label for="password">password:</label>
+            <input id="password" name="password" type="password" value="<%=signupForm.password%>"/>
+        </p>
+
+        <p>
+            <button type="submit">signup</button>
+        </p>
+    </form>
+</div><!--#wrapper-->
+
+<%- include('_footer.html') %>
+
+</body>
+</html>

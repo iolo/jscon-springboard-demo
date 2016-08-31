@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>forum list</title>
+</head>
+<body>
+
+<%- include('_header.html') %>
+
+<div id="wrapper">
+    <h1>forum list (<%= forums.length %>)</h1>
+
+    <ul>
+        <% for(var forum of forums) { %>
+        <li>
+            <a href="post_list?forumId=<%= forum.id %>"><%= forum.title %></a>
+        </li>
+        <% } %>
+    </ul>
+</div><!--#wrapper-->
+
+<%- include('_footer.html') %>
+
+</body>
+</html>

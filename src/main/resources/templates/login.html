@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>login</title>
+</head>
+<body>
+
+<%- include('_header.html') %>
+
+<div id="wrapper">
+    <h1>login</h1>
+
+    <form action="login_post" method="POST">
+        <input name="next" type="hidden" value="<%= loginForm.next %>"/>
+
+        <p>
+            <label for="username">username:</label>
+            <input id="username" name="username" type="text" value="<%= loginForm.username%>"
+                   placeholder="u1,u2,u3,..."/>
+        </p>
+
+        <p>
+            <label for="password">password:</label>
+            <input id="password" name="password" type="password" value="<%= loginForm.password%>"
+                   placeholder="p1,p2,p3,..."/>
+        </p>
+
+        <p>
+            <button type="submit">login</button>
+        </p>
+    </form>
+</div><!--#wrapper-->
+
+<%- include('_footer.html') %>
+
+</body>
+</html>

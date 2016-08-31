@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>post list</title>
+</head>
+<body>
+
+<%- include('_header.html') %>
+
+<div id="wrapper">
+    <p>back to <a href="forum_list">forum list</a></p>
+
+    <h1><%= forum.title %></h1>
+
+    <ul>
+        <% for(var post of posts) { %>
+        <li>
+            <a href="post_view?postId=<%= post.id %>"><%= post.title %></a>
+            <small>at <%= $timeAgo(post.createdAt) %></small>
+            <small>by <%= post.user.username %></small>
+        </li>
+        <% } %>
+    </ul>
+
+    <div>
+        <% if (currentUser) { %>
+        <a href="post_form?forumId=<%= forumId %>">write new post</a>
+        <% } else { %>
+        <a href="login?next=<%= encodeURIComponent('post_form?forumId=' + forumId) %>">login and write post</a>
+        <% } %>
+    </div>
+</div><!--#wrapper-->
+
+<%- include('_footer.html') %>
+
+</body>
+</html>
